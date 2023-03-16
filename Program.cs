@@ -9,7 +9,7 @@ builder.Logging.AddAzureWebAppDiagnostics();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<MyDatabaseContext>(options =>
-                    options.UseSqlite("Data Source=localdatabase.db"));
+                    options.UseNpgsql(builder.Configuration.GetConnectionString("AZURE_POSTGRESQL_CONNECTIONSTRING")));
 
 var app = builder.Build();
 
